@@ -21,8 +21,7 @@ impl CrateMetadata {
         metadata.target_directory = util::force_canonicalize_dir(&metadata.target_directory)?;
         metadata.workspace_root = metadata.workspace_root.canonicalize_utf8()?;
 
-        let mut target_directory =
-            util::force_canonicalize_dir(&metadata.target_directory.join("near"))?;
+        let mut target_directory = metadata.target_directory.join("near");
 
         // Normalize the package and lib name.
         let package_name = root_package.name.replace('-', "_");
@@ -33,6 +32,8 @@ impl CrateMetadata {
             // as the name of the sub-folder where we put the `.contract` bundle.
             target_directory = target_directory.join(package_name);
         }
+
+        target_directory = util::force_canonicalize_dir(&target_directory)?;
 
         let crate_metadata = CrateMetadata {
             root_package,
