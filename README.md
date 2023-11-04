@@ -22,16 +22,10 @@
 
 ## Installation
 
-From crates.io:
-
-```console
-$ cargo install cargo-near
-```
-
 To install from source:
 
 ```console
-$ git clone https://github.com/near/cargo-near
+$ git clone https://github.com/miraclx/cargo-near
 $ cargo install --path cargo-near
 ```
 
